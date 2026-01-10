@@ -16,7 +16,7 @@
         inputField.addEventListener('keydown', function(event) {
             var allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'];
 
-            if (!(/\d/.test(event.key) || allowedKeys.indexOf(event.key) !== -1)) {
+            if (!(/\d/.test(event.key) || allowedKeys.includes(event.key))) {
                 event.preventDefault();
             }
         });
