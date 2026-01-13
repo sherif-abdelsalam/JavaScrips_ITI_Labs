@@ -14,15 +14,15 @@ class Book {
             isNaN(numOfPages) || numOfPages <= 0 ||
             isNaN(numOfCopies) || numOfCopies <= 0
         ) {
-            throw new Error("Enter a valid Book :(")
+            throw new Error("Not valid book info, Enter a full valid info for the book!!")
         }
 
         this.#title = title.trim();
-        this.#numOfChapters = numOfChapters;
+        this.#numOfChapters = +numOfChapters;
         this.#author = author.trim();
-        this.#numOfPages = numOfPages;
+        this.#numOfPages = +numOfPages;
         this.#publisher = publisher.trim();
-        this.#numOfCopies = numOfCopies;
+        this.#numOfCopies = +numOfCopies;
     }
 
     get title() { return this.#title; }
@@ -43,14 +43,11 @@ class Box {
     #numOfBooks;
 
     constructor(height, width, length, material) {
-        if (!Number.isFinite(height) || !Number.isFinite(width) || !Number.isFinite(length)) {
-            throw new Error("Dimensions must be numbers.");
-        }
-        if (height <= 0 || width <= 0 || length <= 0) {
-            throw new Error("Dimensions must be positive numbers.");
-        }
-        if (typeof material !== 'string' || material.trim() === '') {
-            throw new Error("Material must be a non-empty string.");
+        if (isNaN(height) || isNaN(width) || isNaN(length)
+         || height <= 0 || width <= 0 || length <= 0
+         || typeof material !== 'string' || material.trim() === ''
+        ) {
+            throw new Error("Not Valid Box, Enter a full valid info for the box.");
         }
 
         this.#height = +height;
